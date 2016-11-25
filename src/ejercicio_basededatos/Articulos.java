@@ -26,12 +26,12 @@ public class Articulos extends javax.swing.JFrame {
         Connection connection = DriverManager.getConnection(url, user,pass);
         
         Statement s = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        String query = "select * from articulos";
+        String query = "select A.*, F.NOMBRE from fabricantes F, articulos A where A.FABRICANTE=F.COD_FABRICANTE";
         r = s.executeQuery(query);
         r.first();
         codarticulo.setText(r.getString("COD_ARTICULO"));
         articulo.setText(r.getString("ARTICULO"));
-        fabricante.setText(r.getString("FABRICANTE"));
+        fabricante.setText(r.getString("F.NOMBRE"));
         peso.setText(r.getString("PESO"));
         categoria.setText(r.getString("CATEGORIA"));
         precioventa.setText(r.getString("PRECIO_VENTA"));
@@ -290,7 +290,7 @@ public class Articulos extends javax.swing.JFrame {
             if(r.previous()){
                 codarticulo.setText(r.getString("COD_ARTICULO"));
                 articulo.setText(r.getString("ARTICULO"));
-                fabricante.setText(r.getString("FABRICANTE"));
+                fabricante.setText(r.getString("F.NOMBRE"));
                 peso.setText(r.getString("PESO"));
                 categoria.setText(r.getString("CATEGORIA"));        
                 precioventa.setText(r.getString("PRECIO_VENTA"));}
@@ -306,7 +306,7 @@ public class Articulos extends javax.swing.JFrame {
             if(r.next());{
             codarticulo.setText(r.getString("COD_ARTICULO"));
             articulo.setText(r.getString("ARTICULO"));
-            fabricante.setText(r.getString("FABRICANTE"));
+            fabricante.setText(r.getString("F.NOMBRE"));
             peso.setText(r.getString("PESO"));
             categoria.setText(r.getString("CATEGORIA"));
             precioventa.setText(r.getString("PRECIO_VENTA"));
@@ -342,7 +342,7 @@ public class Articulos extends javax.swing.JFrame {
             r.first();{
             codarticulo.setText(r.getString("COD_ARTICULO"));
             articulo.setText(r.getString("ARTICULO"));
-            fabricante.setText(r.getString("FABRICANTE"));
+            fabricante.setText(r.getString("F.NOMBRE"));
             peso.setText(r.getString("PESO"));
             categoria.setText(r.getString("CATEGORIA"));
             precioventa.setText(r.getString("PRECIO_VENTA"));
@@ -358,7 +358,7 @@ public class Articulos extends javax.swing.JFrame {
             r.last();{
             codarticulo.setText(r.getString("COD_ARTICULO"));
             articulo.setText(r.getString("ARTICULO"));
-            fabricante.setText(r.getString("FABRICANTE"));
+            fabricante.setText(r.getString("F.NOMBRE"));
             peso.setText(r.getString("PESO"));
             categoria.setText(r.getString("CATEGORIA"));
             precioventa.setText(r.getString("PRECIO_VENTA"));
@@ -411,7 +411,7 @@ public class Articulos extends javax.swing.JFrame {
         try {
             codarticulo.setText(r.getString("COD_ARTICULO"));
             articulo.setText(r.getString("ARTICULO"));
-            fabricante.setText(r.getString("FABRICANTE"));
+            fabricante.setText(r.getString("F.NOMBRE"));
             peso.setText(r.getString("PESO"));
             categoria.setText(r.getString("CATEGORIA"));
             precioventa.setText(r.getString("PRECIO_VENTA"));
@@ -480,7 +480,7 @@ Menu cli = new Menu();
             r.first();
             codarticulo.setText(r.getString("COD_ARTICULO"));
             articulo.setText(r.getString("ARTICULO"));
-            fabricante.setText(r.getString("FABRICANTE"));
+            fabricante.setText(r.getString("F.NOMBRE"));
             peso.setText(r.getString("PESO"));
             categoria.setText(r.getString("CATEGORIA"));
             precioventa.setText(r.getString("PRECIO_VENTA"));
